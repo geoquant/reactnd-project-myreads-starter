@@ -10,8 +10,16 @@ class BookshelfChanger extends Component {
 
   render() {
     const {book, shelf, moveBook} = this.props;
+
     const allOptions = ['currentlyReading', 'wantToRead', 'read', 'none'];
     const filterOptions = allOptions.filter(select => select !== shelf);
+    const options = filterOptions.map((select, idx) =>
+      <option value={select} key={idx}>
+        {select
+          .replace(/([A-Z])/g, match => ` ${match}`)
+          .replace(/^./, match => match.toUpperCase())}
+      </option>
+    );
 
     return (
       <div className="book-shelf-changer">
@@ -22,13 +30,7 @@ class BookshelfChanger extends Component {
           <option value="moveTo" disabled>
             Move to...
           </option>
-          {filterOptions.map((select, idx) =>
-            <option value={select} key={idx}>
-              {select
-                .replace(/([A-Z])/g, match => ` ${match}`)
-                .replace(/^./, match => match.toUpperCase())}
-            </option>
-          )}
+          {options}
         </select>
       </div>
     );

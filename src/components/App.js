@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
-import CreateBook from './CreateBook';
+import SearchBook from './SearchBook';
 import BookshelfList from './BookshelfList';
 import * as BooksAPI from '../BooksAPI';
 import '../style/App.css';
@@ -37,7 +37,7 @@ class BooksApp extends Component {
         />
         <Route
           path="/search"
-          render={() => <CreateBook books={books} moveBook={this.moveBook} />}
+          render={() => <SearchBook books={books} moveBook={this.moveBook} />}
         />
       </div>
     );

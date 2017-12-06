@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI';
 
 // this is a controlled component
-class CreateBook extends Component {
+class SearchBook extends Component {
   static propTypes = {
     moveBook: PropTypes.func.isRequired
   };
@@ -46,4 +46,4 @@ class CreateBook extends Component {
   }
 }
 
-export default CreateBook;
+export default SearchBook;
