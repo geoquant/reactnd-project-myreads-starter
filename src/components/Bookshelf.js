@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 
 class Bookshelf extends Component {
   static PropTypes = {
-    shelf: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
-    moveBook: PropTypes.func.isRequired
+    moveBook: PropTypes.func.isRequired,
+    shelf: PropTypes.string.isRequired
   };
 
   render() {
-    const {shelf, books, moveBook} = this.props;
+    const {books, moveBook, shelf} = this.props;
 
-    // string manipulation: fooBar => Foo Bar
+    // string formatting: fooBar => Foo Bar
     const shelfNames = shelf.map(title =>
       title
         .replace(/([A-Z])/g, match => ` ${match}`)
@@ -29,7 +29,7 @@ class Bookshelf extends Component {
             {books.map(book =>
               book.map(b =>
                 <li key={b.title}>
-                  <Book book={b} moveBook={moveBook} />
+                  <Book book={b} shelf={b.shelf} moveBook={moveBook} />
                 </li>
               )
             )}

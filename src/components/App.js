@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
-import CreateBook from './components/CreateBook';
-import BookshelfList from './components/BookshelfList';
-import * as BooksAPI from './BooksAPI';
-import './App.css';
+import CreateBook from './CreateBook';
+import BookshelfList from './BookshelfList';
+import * as BooksAPI from '../BooksAPI';
+import '../style/App.css';
 
 class BooksApp extends Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class BooksApp extends Component {
   moveBook = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       book.shelf = shelf;
-      this.setState(state => ({
-        // Filter duplicate books and add new book to the array
-        books: state.books.filter(b => b.id !== book.id).concat([book])
+      this.setState(previousState => ({
+        // Filter duplicate books and add new books to the array
+        books: previousState.books.filter(b => b.id !== book.id).concat([book])
       }));
     });
   };

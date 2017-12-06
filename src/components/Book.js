@@ -5,8 +5,8 @@ import BookshelfChanger from './BookshelfChanger';
 class Book extends Component {
   static PropTypes = {
     book: PropTypes.object.isRequired,
-    shelf: PropTypes.string.isRequired,
-    moveBook: PropTypes.func.isRequired
+    moveBook: PropTypes.func.isRequired,
+    shelf: PropTypes.string.isRequired
   };
 
   render() {

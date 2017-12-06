@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Bookshelf from './Bookshelf';
+import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 
 class BookshelfList extends Component {
+  static PropTypes = {
+    books: PropTypes.array.isRequired
+  };
+
   render() {
-    const books = this.props.books;
+    const {books} = this.props;
     const shelves = [
       {currentlyReading: books.filter(b => b.shelf === 'currentlyReading')},
       {wantToRead: books.filter(b => b.shelf === 'wantToRead')},
@@ -22,7 +27,7 @@ class BookshelfList extends Component {
             <Bookshelf
               key={Object.keys(shelf)}
               shelf={Object.keys(shelf)}
-              books={Object.values(shelf).sort(sortBy('title'))}
+              books={Object.values(shelf).map(b => b.sort(sortBy('title')))}
               moveBook={this.props.moveBook}
             />
           )}
